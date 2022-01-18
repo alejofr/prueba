@@ -9,14 +9,16 @@
                 <th scope="col">DNI</th>
                 <th scope="col"> Telefono </th>
                 <th></th>
+                <th></th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody class="data">
                 <tr v-for="lista in list" :key="lista.id">
                 <td>{{lista.name}}</td>
                 <td>{{lista.email}}</td>
                 <td>{{lista.dni}}</td>
                 <td>{{lista.phone}}</td>
+                <td> <router-link class="btn btn-warning" :to="{name: 'VerCliente', params: { id: lista.id }}">Ver</router-link></td>
                 <td> <button @click="eliminar(lista.id)">Eliminar</button> </td>
                 </tr>
             </tbody>
@@ -48,12 +50,12 @@ export default {
             console.log(id);
             let self = this
             this.axios
-            .delete('https://dashboard.onexerp.co/api/public/api/v2/client/'+id).then(function (response){
-                self.$router.replace('/lista');
+            .delete('https://dashboard.onexerp.co/api/public/api/v2/client/'+id).then(function (){
+                self.$forceUpdate();
             }).catch(function (error) {
                 console.log(error);
             });
         }
-    }
+    },
 }
 </script>

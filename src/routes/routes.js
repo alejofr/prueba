@@ -8,9 +8,15 @@ export const routes = [
 	},
 	{
 		name: 'Lista',
-		path: '/lista',
+		path: '/lista-clientes',
 		component:  () => import ('../components/List.vue'),
 		meta: { requiresAuth: true }
+	},
+	{
+		name: 'VerCliente',
+		path: '/cliente/:id',
+		component:  () => import ('../components/Show.vue'),
+		meta: { requiresAuth: true } 
 	},
 	{
 		name: 'Login',
